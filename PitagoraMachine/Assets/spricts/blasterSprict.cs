@@ -20,19 +20,22 @@ void Update()
     transform.rotation =  Quaternion.identity;
     yPos = transform.position.y;
     //spaceキーが押されたとき
-    if (Input.GetKeyDown(KeyCode.Space) && Ballcontroller.Ballreset == true) 
+    if (Input.GetKeyDown(KeyCode.Space) && Ballcontroller.Ballstatus == 0) 
     {
         //Rigidbodyに上方向にJumpPowerの力を加える
         rb.AddForce(transform.up * jumpPower);
-        Ballcontroller.Ballreset = false;
+        Ballcontroller.Ballstatus = 1;
+        Ballcontroller.isfirstpushed = true;
         text[0].SetActive(false);
     }
 
     if(yPos >= 2)
         {
             transform.position = new Vector3(8,2,0);
-
-            
+            // ボールを移動させる処理の直前または直後に入れるコード
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.velocity = Vector3.zero;        // 移動速度（エネルギー）を消す
+            rb.angularVelocity = Vector3.zero; // 回転の勢いを消す
         }
 }
 }
