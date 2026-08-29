@@ -1,34 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 
 public class scoreManagerSprict : MonoBehaviour
 {
-    public static int score = 0;  //現在のスコア
-    [Header("この感圧版のプラマイ")] 
-    public int plusscore = 10;
-    
-    [Header("スコア表示用のテキスト")]
+    public static int score = 0;
+
+    [Header("この穴の加算ポイント")]
+    public int plusscore;
+
+    [Header("穴の数値テキスト（+10などを表示するTMP）")]
+    public TextMeshPro holeValueText;
+
+    [Header("最終的なスコア表示")]
     public TextMeshPro scoretext;
-    
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        // ゲーム開始時に数値を決める
+        ShuffleScore();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        scoretext.text = score.ToString();
+        if (collision.gameObject.name.Contains("Ball") || collision.gameObject.CompareTag("Player"))
+        {
+            // 1. スコアの加算
+            score += plusscore;
+            scoretext.text = score.ToString();
+
+            // 2. ボールのリセット
+            Ballcontroller.Ballstatus = 2;
+
+            // 3. ステージ上の「すべての穴」の数値を一斉にシャッフル！
+            scoreManagerSprict[] allHoles = FindObjectsOfType<scoreManagerSprict>();
+            foreach (scoreManagerSprict hole in allHoles)
+            {
+                hole.ShuffleScore();
+            }
+        }
     }
 
-
-    void OnCollisionEnter(Collision collision)
+    // 数値をシャッフルして表示を更新する専用関数
+    public void ShuffleScore()
     {
-        Ballcontroller.Ballstatus = 2;
-        score += plusscore;
+        int[] choices = { -10, -5, 5, 10, 15, 20 };
+        plusscore = choices[Random.Range(0, choices.Length)];
+
+        if (holeValueText != null)
+        {
+            holeValueText.text = plusscore > 0 ? $"+{plusscore}" : plusscore.ToString();
+        }
     }
 }

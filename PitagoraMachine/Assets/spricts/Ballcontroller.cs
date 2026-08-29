@@ -18,7 +18,7 @@ public class Ballcontroller : MonoBehaviour
     {
         if(Ballstatus == 2 )
         {
-            transform.position = new Vector3(8,0,0);
+            transform.position = new Vector3(8,-5.5f,0);
             Ballstatus = 0;
         }
     }
