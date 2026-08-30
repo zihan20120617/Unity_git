@@ -664,6 +664,8 @@ MonoBehaviour:
   plusscore: 5
   holeValueText: {fileID: 1538845737}
   scoretext: {fileID: 79370455}
+  goodsoundEffect: {fileID: 8300000, guid: e6d6ea5420e2e46f98b8e40cd4ebc770, type: 3}
+  badsoundEffect: {fileID: 8300000, guid: b0826e475733f47ea9d6b66bf1312fc6, type: 3}
 --- !u!1 &152192644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1477,8 @@ MonoBehaviour:
   plusscore: 10
   holeValueText: {fileID: 1700176813}
   scoretext: {fileID: 79370455}
+  goodsoundEffect: {fileID: 8300000, guid: e6d6ea5420e2e46f98b8e40cd4ebc770, type: 3}
+  badsoundEffect: {fileID: 8300000, guid: b0826e475733f47ea9d6b66bf1312fc6, type: 3}
 --- !u!1 &411529470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,8 +2346,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPower: 2500
-  text:
-  - {fileID: 152192644}
+  blastersound: {fileID: 8300000, guid: 365d698707923484f8e1137dd9eac798, type: 3}
+  errorsound: {fileID: 8300000, guid: a8651f65ebfe549f99df6f2d4a97d481, type: 3}
+  text: {fileID: 152192644}
 --- !u!54 &534230480
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3122,6 +3127,8 @@ MonoBehaviour:
   plusscore: 15
   holeValueText: {fileID: 1818945935}
   scoretext: {fileID: 79370455}
+  goodsoundEffect: {fileID: 8300000, guid: e6d6ea5420e2e46f98b8e40cd4ebc770, type: 3}
+  badsoundEffect: {fileID: 8300000, guid: b0826e475733f47ea9d6b66bf1312fc6, type: 3}
 --- !u!1 &855783041
 GameObject:
   m_ObjectHideFlags: 0
@@ -3837,11 +3844,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aa8ae4fbba8574efebd3b7dd8d2fa80c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4296,6 +4303,8 @@ MonoBehaviour:
   plusscore: -5
   holeValueText: {fileID: 904025177}
   scoretext: {fileID: 79370455}
+  goodsoundEffect: {fileID: 8300000, guid: e6d6ea5420e2e46f98b8e40cd4ebc770, type: 3}
+  badsoundEffect: {fileID: 8300000, guid: b0826e475733f47ea9d6b66bf1312fc6, type: 3}
 --- !u!1 &1121856050
 GameObject:
   m_ObjectHideFlags: 0
@@ -4880,6 +4889,8 @@ MonoBehaviour:
   plusscore: 10
   holeValueText: {fileID: 1971115515}
   scoretext: {fileID: 79370455}
+  goodsoundEffect: {fileID: 8300000, guid: e6d6ea5420e2e46f98b8e40cd4ebc770, type: 3}
+  badsoundEffect: {fileID: 8300000, guid: b0826e475733f47ea9d6b66bf1312fc6, type: 3}
 --- !u!65 &1301209066
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7658,6 +7669,8 @@ MonoBehaviour:
   plusscore: 10
   holeValueText: {fileID: 1567263745}
   scoretext: {fileID: 79370455}
+  goodsoundEffect: {fileID: 8300000, guid: e6d6ea5420e2e46f98b8e40cd4ebc770, type: 3}
+  badsoundEffect: {fileID: 8300000, guid: b0826e475733f47ea9d6b66bf1312fc6, type: 3}
 --- !u!1 &2102855058
 GameObject:
   m_ObjectHideFlags: 0

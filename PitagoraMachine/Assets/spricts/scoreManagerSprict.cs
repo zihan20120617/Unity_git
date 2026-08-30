@@ -15,6 +15,12 @@ public class scoreManagerSprict : MonoBehaviour
     [Header("最終的なスコア表示")]
     public TextMeshPro scoretext;
 
+    [Header("穴に入った時の効果音（成功）")]
+    public AudioClip goodsoundEffect;
+
+    [Header("穴に入った時の効果音（失敗）")]
+    public AudioClip badsoundEffect;
+
     void Start()
     {
         // ゲーム開始時に数値を決める
@@ -28,6 +34,16 @@ public class scoreManagerSprict : MonoBehaviour
             // 1. スコアの加算
             score += plusscore;
             scoretext.text = score.ToString();
+            //音を鳴らす
+            if(plusscore >= 0)
+            {
+                AudioSource.PlayClipAtPoint(goodsoundEffect,transform.position,1.0f);
+            }
+
+            else
+            {
+                AudioSource.PlayClipAtPoint(badsoundEffect,transform.position,1.0f);
+            }
 
             // 2. ボールのリセット
             Ballcontroller.Ballstatus = 2;
@@ -38,6 +54,8 @@ public class scoreManagerSprict : MonoBehaviour
             {
                 hole.ShuffleScore();
             }
+
+            
         }
     }
 

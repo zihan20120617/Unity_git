@@ -7,7 +7,12 @@ public class blasterSprict : MonoBehaviour
 {   Rigidbody rb;               //Rigidbody型の変数
 public float jumpPower;     //ジャンプ力　アクセス修飾子をpublicに指定
 float yPos = 0;
-public GameObject[] text;
+[Header("発射成功")]
+public AudioClip blastersound;
+[Header("発射失敗")]
+public AudioClip errorsound;
+[Header("テキスト")]
+public GameObject text;
 
 
 void Start()
@@ -20,13 +25,22 @@ void Update()
     transform.rotation =  Quaternion.identity;
     yPos = transform.position.y;
     //spaceキーが押されたとき
-    if (Input.GetKeyDown(KeyCode.Space) && Ballcontroller.Ballstatus == 0) 
+    if (Input.GetKeyDown(KeyCode.Space) ) 
     {
-        //Rigidbodyに上方向にJumpPowerの力を加える
-        rb.AddForce(transform.up * jumpPower);
-        Ballcontroller.Ballstatus = 1;
-        Ballcontroller.isfirstpushed = true;
-        text[0].SetActive(false);
+        if( Ballcontroller.Ballstatus == 0)
+            {
+                //Rigidbodyに上方向にJumpPowerの力を加える
+                rb.AddForce(transform.up * jumpPower);
+                Ballcontroller.Ballstatus = 1;
+                Ballcontroller.isfirstpushed = true;
+                text.SetActive(false);
+                AudioSource.PlayClipAtPoint(blastersound, transform.position, 1.0f);
+            }
+            else
+            {
+                AudioSource.PlayClipAtPoint(errorsound, transform.position, 1.0f);
+            }
+        
     }
 
     if(yPos >= 2)
