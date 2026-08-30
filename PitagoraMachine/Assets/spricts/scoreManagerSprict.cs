@@ -44,7 +44,7 @@ public class scoreManagerSprict : MonoBehaviour
     // 数値をシャッフルして表示を更新する専用関数
     public void ShuffleScore()
     {
-        int[] choices = { -10, -5, 5, 10, 15, 20 };
+        int[] choices = { -15,-10,-10, -5, 10, 10, 15, 20 };
         plusscore = choices[Random.Range(0, choices.Length)];
 
         if (holeValueText != null)
