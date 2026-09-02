@@ -2697,6 +2697,7 @@ MonoBehaviour:
   blastersound: {fileID: 8300000, guid: 365d698707923484f8e1137dd9eac798, type: 3}
   errorsound: {fileID: 8300000, guid: a8651f65ebfe549f99df6f2d4a97d481, type: 3}
   text: {fileID: 152192644}
+  space: 32
 --- !u!54 &534230480
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3629,6 +3630,7 @@ GameObject:
   - component: {fileID: 819098037}
   - component: {fileID: 819098036}
   - component: {fileID: 819098035}
+  - component: {fileID: 819098038}
   m_Layer: 5
   m_Name: Buttonright
   m_TagString: Untagged
@@ -3738,6 +3740,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819098033}
   m_CullTransparentMesh: 1
+--- !u!114 &819098038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819098033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 893429411}
+          m_TargetAssemblyTypeName: kabe_kontroller, Assembly-CSharp
+          m_MethodName: SetRightPressed
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 893429411}
+          m_TargetAssemblyTypeName: kabe_kontroller, Assembly-CSharp
+          m_MethodName: SetRightPressed
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &855783041
 GameObject:
   m_ObjectHideFlags: 0
@@ -4127,8 +4174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0b419f7a89a407688529a178249c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text:
-  - {fileID: 1455345847}
+  text: {fileID: 1455345847}
+  leftKey: 276
+  rightKey: 275
 --- !u!54 &893429412
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5616,6 +5664,7 @@ GameObject:
   - component: {fileID: 1203476244}
   - component: {fileID: 1203476243}
   - component: {fileID: 1203476242}
+  - component: {fileID: 1203476245}
   m_Layer: 5
   m_Name: Button_launch
   m_TagString: Untagged
@@ -5725,6 +5774,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203476240}
   m_CullTransparentMesh: 1
+--- !u!114 &1203476245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203476240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534230479}
+          m_TargetAssemblyTypeName: blasterSprict, Assembly-CSharp
+          m_MethodName: LaunchBall
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 534230479}
+          m_TargetAssemblyTypeName: blasterSprict, Assembly-CSharp
+          m_MethodName: LaunchBall
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1203702695
 GameObject:
   m_ObjectHideFlags: 0
@@ -8146,6 +8236,7 @@ GameObject:
   - component: {fileID: 1734838630}
   - component: {fileID: 1734838629}
   - component: {fileID: 1734838628}
+  - component: {fileID: 1734838631}
   m_Layer: 5
   m_Name: Buttonleft
   m_TagString: Untagged
@@ -8255,6 +8346,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734838626}
   m_CullTransparentMesh: 1
+--- !u!114 &1734838631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734838626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 893429411}
+          m_TargetAssemblyTypeName: kabe_kontroller, Assembly-CSharp
+          m_MethodName: SetLeftPressed
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 893429411}
+          m_TargetAssemblyTypeName: kabe_kontroller, Assembly-CSharp
+          m_MethodName: SetLeftPressed
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1818945933
 GameObject:
   m_ObjectHideFlags: 0

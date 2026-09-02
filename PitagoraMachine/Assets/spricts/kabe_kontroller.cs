@@ -5,8 +5,18 @@ using TMPro;
 
 public class kabe_kontroller : MonoBehaviour
 {
-    public GameObject[] text;
+    [Header("テキスト")]
+    public GameObject text;
     private bool isMoved = false;
+
+    [Header("キーボード設定")]
+    [SerializeField] private KeyCode leftKey = KeyCode.LeftArrow;
+    [SerializeField] private KeyCode rightKey = KeyCode.RightArrow;
+    [Header("スマホ用ボタンフラグ")]
+    private bool isLeftPressed = false;
+    private bool isRightPressed = false;
+    public void SetLeftPressed(bool isPressed) => isLeftPressed = isPressed;
+    public void SetRightPressed(bool isPressed) => isRightPressed = isPressed; // 右ボタン用
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +26,14 @@ public class kabe_kontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(leftKey) | isLeftPressed )
         {
             transform.position += new Vector3(-1,0,0) * Time.deltaTime;
             isMoved = true; 
         }
 
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(rightKey) | isRightPressed)
         {
             transform.position += new Vector3(1,0,0) * Time.deltaTime;
             isMoved = true; 
@@ -31,7 +41,7 @@ public class kabe_kontroller : MonoBehaviour
 
         if(isMoved == true)
         {
-            text[0].SetActive(false);
+            text.SetActive(false);
         }
 
         if(transform.position.x <= 6.5)
