@@ -15,7 +15,7 @@ public class  Gamestarter : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            FadeManager.Instance.LoadScene("pinball",2.0f);
+            FadeManager.Instance.LoadScene("classic mode",2.0f);
         }
     }
 }

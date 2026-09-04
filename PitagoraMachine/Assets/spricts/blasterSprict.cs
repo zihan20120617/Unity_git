@@ -57,5 +57,6 @@ public class blasterSprict : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(errorsound, transform.position, 1.0f);
         }
+        
     }
 }
