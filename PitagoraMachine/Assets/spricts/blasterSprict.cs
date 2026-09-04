@@ -44,19 +44,27 @@ public class blasterSprict : MonoBehaviour
 
     // ★ キーボードとスマホボタンの両方から呼び出す発射処理
     public void LaunchBall()
+{
+    // ★ ゲームオーバーなら何もしない
+    if (ClassicManager.instance != null && ClassicManager.instance.isGameOver) return;
+
+    if (Ballcontroller.Ballstatus == 0)
     {
-        if (Ballcontroller.Ballstatus == 0)
+        rb.AddForce(transform.up * jumpPower);
+        Ballcontroller.Ballstatus = 1;
+        Ballcontroller.isfirstpushed = true;
+        text.SetActive(false);
+        AudioSource.PlayClipAtPoint(blastersound, transform.position, 1.0f);
+
+        // ★ 発射成功時に球数を1減らす
+        if (ClassicManager.instance != null)
         {
-            rb.AddForce(transform.up * jumpPower);
-            Ballcontroller.Ballstatus = 1;
-            Ballcontroller.isfirstpushed = true;
-            text.SetActive(false);
-            AudioSource.PlayClipAtPoint(blastersound, transform.position, 1.0f);
+            ClassicManager.instance.DecreaseBall();
         }
-        else
-        {
-            AudioSource.PlayClipAtPoint(errorsound, transform.position, 1.0f);
-        }
-        
     }
+    else
+    {
+        AudioSource.PlayClipAtPoint(errorsound, transform.position, 1.0f);
+    }
+}
 }
