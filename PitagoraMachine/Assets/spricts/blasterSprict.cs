@@ -57,6 +57,7 @@ public class blasterSprict : MonoBehaviour
         AudioSource.PlayClipAtPoint(blastersound, transform.position, 1.0f);
 
         // ★ 発射成功時に球数を1減らす
+        // ボールが落ちてリセットされるタイミングの処理内
         if (ClassicManager.instance != null)
         {
             ClassicManager.instance.DecreaseBall();
