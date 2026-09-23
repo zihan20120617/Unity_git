@@ -5,6 +5,8 @@ using UnityEngine;
 public class UboatMoverSprict : MonoBehaviour
 {
     // Start is called before the first frame update
+    private int isTouched = 0;
+    //ゲームオーバー数：１
     void Start()
     {
         Debug.Log("ee");
@@ -28,11 +30,18 @@ public class UboatMoverSprict : MonoBehaviour
             }
             
         }
+        Debug.Log(isTouched);
+
+        if(isTouched == 1)
+        {
+            unimoverSprict.isGameover = true;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("ee");
+        isTouched ++;
         
            
         

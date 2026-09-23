@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class unimoverSprict : MonoBehaviour
 {
+    public static bool isGameover = false;
+    public static float speed = -0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,21 @@ public class unimoverSprict : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0,0,-0.03f);
+        transform.position += new Vector3(0,0,speed);
+        if(isGameover == true)
+        {
+            Gameover();
+        }
+        
+        
+        
+        
+        
+    }
+
+    void Gameover()
+    {
+        Time.timeScale = 0f;
+        Debug.Log("trtr");
     }
 }
