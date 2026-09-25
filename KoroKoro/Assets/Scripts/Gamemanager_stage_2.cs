@@ -16,6 +16,7 @@ public class Gamemanager_stage_2 : MonoBehaviour
     void Start()
     {
         target = GameObject.Find("Player");
+        
     }
 
     // Update is called once per frame
