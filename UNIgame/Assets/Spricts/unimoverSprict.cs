@@ -15,10 +15,14 @@ public class unimoverSprict : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0,0,speed);
+        
         if(isGameover == true)
         {
             Gameover();
+        }
+        else
+        {
+            transform.position += new Vector3(0,0,speed);
         }
         
         

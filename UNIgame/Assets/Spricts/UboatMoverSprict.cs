@@ -15,6 +15,7 @@ public class UboatMoverSprict : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(unimoverSprict.isGameover == false){
         if(Input.GetKeyDown(KeyCode.LeftArrow)){
             if(transform.position.x > -9 ){
                 transform.position += new Vector3(-10,0,0);
@@ -37,6 +38,7 @@ public class UboatMoverSprict : MonoBehaviour
             unimoverSprict.isGameover = true;
         }
     }
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -48,3 +50,4 @@ public class UboatMoverSprict : MonoBehaviour
     }
 
 }
+
