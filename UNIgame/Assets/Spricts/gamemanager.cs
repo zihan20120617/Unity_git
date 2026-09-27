@@ -1,35 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class gamemanager : MonoBehaviour
 {
-    [Header("クリア")]
-    public TextMeshProUGUI gameclear;
-    [Header("失敗")]
-    public TextMeshProUGUI gameover;
-    [Header("うに")]
-    public GameObject UNI;
+    public static int passedUniCount = 0;  // 通過したウニの数
+    public int clearTargetCount = 20;      // クリアに必要なウニの数（20個 ＝ 10ウェーブ避ければクリア）
 
-    string clear = "Gameclear";
-    string over = "Gameover";
-    string none = "";
-    
+    public GameObject gameOverText;
+    public GameObject gameClearText;
+
+    private bool isClear = false;
+
+    void Start()
+    {
+        // 初期化
+        passedUniCount = 0;
+        unimoverSprict.isGameover = false;
+
+        // UIを非表示にしておく
+        if (gameOverText != null) gameOverText.SetActive(false);
+        if (gameClearText != null) gameClearText.SetActive(false);
+    }
+
     void Update()
     {
-        if(UNI.transform.position.z <= -30)
+        // 目標数に達したらクリア
+        if (!isClear && !unimoverSprict.isGameover && passedUniCount >= clearTargetCount)
         {
-            gameclear.text = clear;
+            GameClear();
         }
-        else if(unimoverSprict.isGameover == false)
-        {
-            gameclear.text = none;
-            gameover.text = none;
-        }
-        else
-        {
-            gameover.text = over;
-        }
+    }
+
+    public void GameOver()
+    {
+        unimoverSprict.isGameover = true;
+        if (gameOverText != null) gameOverText.SetActive(true);
+    }
+
+    public void GameClear()
+    {
+        isClear = true;
+        unimoverSprict.isGameover = true; // 動きをストップ
+        if (gameClearText != null) gameClearText.SetActive(true);
     }
 }

@@ -1,34 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class unimoverSprict : MonoBehaviour
 {
-    public static bool isGameover = false;
-    public static float speed = -0.1f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed = -0.1f;
+    public float destroyZ = 100.0f;     // 画面外（潜水艦の後ろ）に消えるZ座標
 
-    // Update is called once per frame
+    public static bool isGameover = false;
+
     void Update()
     {
-        
-        if(isGameover == true)
-        {
-            Gameover();
-        }
-        else
-        {
-            transform.position += new Vector3(0,0,speed);
-        }
-    }
+        if (isGameover) return;
 
-    void Gameover()
-    {
-        Time.timeScale = 0f;
-        Debug.Log("trtr");
+        // 手前に移動
+        transform.position += new Vector3(0, 0, speed);
+
+        // 潜水艦を通り過ぎたらカウントして削除
+        if (transform.position.z < destroyZ)
+        {
+            gamemanager.passedUniCount++;
+            Destroy(gameObject);
+        }
+        Debug.Log(gamemanager.passedUniCount);
     }
 }
