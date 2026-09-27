@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Taikennkigamemanager : MonoBehaviour
+public class gamemanager : MonoBehaviour
 {
     [Header("クリア")]
     public TextMeshProUGUI gameclear;
@@ -15,13 +15,7 @@ public class Taikennkigamemanager : MonoBehaviour
     string clear = "Gameclear";
     string over = "Gameover";
     string none = "";
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(UNI.transform.position.z <= -30)
@@ -35,7 +29,6 @@ public class Taikennkigamemanager : MonoBehaviour
         }
         else
         {
-            
             gameover.text = over;
         }
     }

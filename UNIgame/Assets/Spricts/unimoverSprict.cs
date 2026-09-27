@@ -24,11 +24,6 @@ public class unimoverSprict : MonoBehaviour
         {
             transform.position += new Vector3(0,0,speed);
         }
-        
-        
-        
-        
-        
     }
 
     void Gameover()
