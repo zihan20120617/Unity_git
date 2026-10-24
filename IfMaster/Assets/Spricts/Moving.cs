@@ -1,28 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Moving : MonoBehaviour
 {
-    float speed = 1.0f;
+    [Header("text")]
+    public TextMeshPro Text;
+    float yPos = 0;//y座標
+    public bool Gameover = false;
     public int number = 1;
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
-        if(number > 0)
+        if(Gameover == false)
         {
-            transform.position +=  Vector3.up * speed * Time.deltaTime;
+            Game();
         }
-        else
+        if(yPos <= -5)
         {
-            transform.position +=  Vector3.down * speed * Time.deltaTime;
-        } 
-       
+            Gameover = true;
+            Text.text = "Gameover";
+        }
+    }
+
+    void Game()
+    {
+        Text.text = " ";
+            yPos = transform.position.y;
+            if(Input.GetKeyDown(KeyCode.W) | Input.GetKeyUp(KeyCode.W))
+            {
+                transform.position +=  Vector3.up * Time.deltaTime * 15;
+                Debug.Log("up");
+            }
+            else
+            {
+                transform.position +=  Vector3.down * Time.deltaTime;
+            } 
     }
 }
