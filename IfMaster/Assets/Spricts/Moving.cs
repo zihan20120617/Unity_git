@@ -10,6 +10,8 @@ public class Moving : MonoBehaviour
     float yPos = 0;//y座標
     public bool Gameover = false;
     public int number = 1;
+    int pushed = 0;
+    int push = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class Moving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pushed = push-pushed;
         if(Gameover == false)
         {
             Game();
@@ -33,9 +36,9 @@ public class Moving : MonoBehaviour
     {
         Text.text = " ";
             yPos = transform.position.y;
-            if(Input.GetKeyDown(KeyCode.W) | Input.GetKeyUp(KeyCode.W))
+            if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyUp(KeyCode.W))
             {
-                transform.position +=  Vector3.up * Time.deltaTime * 15;
+                transform.position +=  Vector3.up * Time.deltaTime * pushed;
                 Debug.Log("up");
             }
             else
