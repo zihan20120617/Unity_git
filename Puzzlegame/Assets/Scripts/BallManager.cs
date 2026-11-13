@@ -66,12 +66,13 @@ public class BallManager : MonoBehaviour
             int ballA_x = ballBehaviorA.columnNumber;
             int ballA_y = (int)ballObjectA.transform.position.y;
             int ballB_x = ballBehaviorB.columnNumber;
-            int BallB_Y = (int)ballObjectB.transform.position.y;
+            int ballB_y = (int)ballObjectB.transform.position.y;
 
             int nextRightRolateNumber = (rotateNumber + 1) % 4;
             int nextLeftRolateNumber = (rotateNumber + 3) % 4;
             //右移動
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow)
+            && IsInField(ballA_x + 1,ballA_y) && IsInField(ballB_x + 1, ballB_y))
             {
                 ballObjectA.transform.position += new Vector3(size,0f,0f);
                 ballObjectB.transform.position += new Vector3(size,0f,0f);
@@ -89,7 +90,10 @@ public class BallManager : MonoBehaviour
                 
             }
             //回転
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z) 
+            && IsInField(ballA_x + rotatePositions[nextRightRolateNumber].x,
+            ballA_y + rotatePositions[nextRightRolateNumber].y)
+            && IsEmpty(ballA_x + rotatePositions[nextRightRolateNumber].x,ballA_y + rotatePositions[nextRightRolateNumber].y))//公式の回転
             {
                 rotateNumber = nextRightRolateNumber;
                 ballObjectB.transform.position = ballObjectA.transform.position + rotatePositions[rotateNumber];
@@ -100,6 +104,15 @@ public class BallManager : MonoBehaviour
                 rotateNumber = nextLeftRolateNumber;
                 ballObjectB.transform.position = ballObjectA.transform.position + rotatePositions[rotateNumber];
                 ballBehaviorB.columnNumber = ballBehaviorA.columnNumber + rotatePositions[rotateNumber].x;
+            }
+            //高速落下
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                fallSpeed = FAST_SPEED;
+            }
+            else
+            {
+                fallSpeed = NORMAL_SPEED;
             }
         }
         // ボールの落下判定
