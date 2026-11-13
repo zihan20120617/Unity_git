@@ -63,10 +63,43 @@ public class BallManager : MonoBehaviour
         if(faze == FazeStatus.FALL)
         {
             float size = ballObjectA.transform.localScale.x;
-            //→移動
+            int ballA_x = ballBehaviorA.columnNumber;
+            int ballA_y = (int)ballObjectA.transform.position.y;
+            int ballB_x = ballBehaviorB.columnNumber;
+            int BallB_Y = (int)ballObjectB.transform.position.y;
+
+            int nextRightRolateNumber = (rotateNumber + 1) % 4;
+            int nextLeftRolateNumber = (rotateNumber + 3) % 4;
+            //右移動
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 ballObjectA.transform.position += new Vector3(size,0f,0f);
+                ballObjectB.transform.position += new Vector3(size,0f,0f);
+                ballBehaviorA.columnNumber += 1;
+                ballBehaviorB.columnNumber += 1;
+                
+            }
+            //左移動
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                ballObjectA.transform.position += new Vector3(-size,0f,0f);
+                ballObjectB.transform.position += new Vector3(-size,0f,0f);
+                ballBehaviorA.columnNumber -= 1;
+                ballBehaviorB.columnNumber -= 1;
+                
+            }
+            //回転
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                rotateNumber = nextRightRolateNumber;
+                ballObjectB.transform.position = ballObjectA.transform.position + rotatePositions[rotateNumber];
+                ballBehaviorB.columnNumber = ballBehaviorA.columnNumber + rotatePositions[rotateNumber].x;
+            }
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                rotateNumber = nextLeftRolateNumber;
+                ballObjectB.transform.position = ballObjectA.transform.position + rotatePositions[rotateNumber];
+                ballBehaviorB.columnNumber = ballBehaviorA.columnNumber + rotatePositions[rotateNumber].x;
             }
         }
         // ボールの落下判定
@@ -163,9 +196,31 @@ public class BallManager : MonoBehaviour
     }
 
     // ボールが枠内にあるかの判定
-    
+    bool IsInField(int x, int y)
+    {
+        if(0 <= x && x < width && 0 <= y && y < width)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     // 指定位置が空白かどうかの判定
+    bool IsEmpty(int x ,int y)
+    {
+        if(falledBalls[x,y] == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
     
 
     // ボールの接続確認処理(メインのアルゴリズム)
