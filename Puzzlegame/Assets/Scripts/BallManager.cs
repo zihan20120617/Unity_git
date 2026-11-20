@@ -81,7 +81,8 @@ public class BallManager : MonoBehaviour
                 
             }
             //左移動
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow)
+            && IsInField(ballA_x - 1,ballA_y) && IsInField(ballB_x - 1, ballB_y))
             {
                 ballObjectA.transform.position += new Vector3(-size,0f,0f);
                 ballObjectB.transform.position += new Vector3(-size,0f,0f);
@@ -99,7 +100,10 @@ public class BallManager : MonoBehaviour
                 ballObjectB.transform.position = ballObjectA.transform.position + rotatePositions[rotateNumber];
                 ballBehaviorB.columnNumber = ballBehaviorA.columnNumber + rotatePositions[rotateNumber].x;
             }
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.X)
+            && IsInField(ballA_x + rotatePositions[nextRightRolateNumber].x,
+            ballA_y + rotatePositions[nextRightRolateNumber].y)
+            && IsEmpty(ballA_x + rotatePositions[nextRightRolateNumber].x,ballA_y + rotatePositions[nextRightRolateNumber].y))
             {
                 rotateNumber = nextLeftRolateNumber;
                 ballObjectB.transform.position = ballObjectA.transform.position + rotatePositions[rotateNumber];
